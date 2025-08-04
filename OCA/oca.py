@@ -6,8 +6,8 @@ from ascii import print_cat
 
 ### Your Authnetication parameters.
 
-oneadmin = argv[1]
-onepassword = argv[2]
+one_admin = argv[1]
+one_password = argv[2]
 one_fqdn = argv[3]
 
 one_xmlrpc_url = str('http://' + one_fqdn + ':<<CHANGE ME>>/RPC2')
@@ -44,7 +44,7 @@ except OneException as error:
 ### work with templates
 
 try:
-    template_settings = 'HYPERVISOR="kvm" NIC = [NETWORK = "private"] CONTEXT = [NETWORK="YES", TOKEN="yes", START_SCRIPT_BASE64="ZWNobyAkKGRhdGUpID4+IC9yb290L2RhdGUudHh0Cg==", PASSWORD="opennebula"]'
+    template_settings = 'HYPERVISOR="kvm" NIC = [NETWORK = "<<CHANGE ME>>"] CONTEXT = [NETWORK="YES", TOKEN="yes", START_SCRIPT_BASE64="ZWNobyAkKGRhdGUpID4+IC9yb290L2RhdGUudHh0Cg==", PASSWORD="opennebula"]'
 
     one.template.update(alma_linux_vmtemplate_id,template_settings,1)
 
