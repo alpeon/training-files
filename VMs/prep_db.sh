@@ -8,7 +8,6 @@ mkdir -p /run/mysqld
 chown mysql:mysql /run/mysqld
 
 rm -rf /var/lib/mysql/*
-mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 chown -R mysql:mysql /var/lib/mysql
 
 cat > /etc/my.cnf.d/server.cnf <<EOF
@@ -20,6 +19,8 @@ pid-file = /run/mysqld/mariadb.pid
 EOF
 
 sed -i 's/skip-networking//g' /etc/my.cnf.d/mariadb-server.cnf
+
+mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 
 rc-service mariadb start
 
