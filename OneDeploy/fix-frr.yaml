@@ -1,0 +1,23 @@
+---
+- name: Fix the FRR configuration file in scaleway
+  hosts: router
+  become: true
+
+  tasks:
+
+  ## replace the IP address with 0.0.0.0/0
+
+    - name: Replace any IP/CIDR with 0.0.0.0/0 in config file
+      ansible.builtin.replace:
+        path: /etc/frr/bgpd.conf
+        regexp: '\b\d{1,3}(\.\d{1,3}){3}/\d{1,2}\b'
+        replace: '0.0.0.0/0'
+      notify: Restart FRR
+
+  ## restart the FRR service
+  handlers:
+    - name: Restart FRR
+      ansible.builtin.systemd:
+        name: frr
+        state: restarted
+        enabled: true
