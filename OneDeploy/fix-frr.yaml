@@ -17,11 +17,9 @@
   ## restart the FRR service
   handlers:
     - name: Restart FRR
-      block:
-        - name: Wait 60 seconds before restart
-          ansible.builtin.pause:
-            seconds: 60
-        - name: Restart service
-          ansible.builtin.systemd:
-            name: frr
-            state: restarted
+      ansible.builtin.pause:
+        seconds: 60
+    - name: Restart FRR
+      ansible.builtin.systemd:
+        name: frr
+        state: restarted
