@@ -34,7 +34,7 @@ DB_HOST='127.0.0.1'
 service_install()
 {   
     
-    setup_flask()
+    setup_flask
     systemctl enabled --now mariadb
 
     msg info "INSTALL FINISHED"
@@ -45,7 +45,7 @@ service_install()
 service_configure()
 {
     
-    cfg_db()
+    cfg_db
 
     msg info "CONFIGURATION FINISHED"
 
@@ -55,7 +55,7 @@ service_configure()
 
 service_bootstrap()
 {
-
+ return 0
 }
 
 setup_flask()
