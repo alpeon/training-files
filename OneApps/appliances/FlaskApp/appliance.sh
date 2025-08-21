@@ -35,7 +35,7 @@ service_install()
 {   
     
     setup_flask
-    systemctl enabled --now mariadb
+    systemctl enable --now mariadb
 
     msg info "INSTALL FINISHED"
 
